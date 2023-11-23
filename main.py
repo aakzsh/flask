@@ -2,8 +2,10 @@ from flask import Flask, jsonify
 import os
 import pandas as pd
 import pickle
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():
@@ -11,7 +13,12 @@ def index():
 
 @app.route('/check')
 def checkk():
-    return "69"    
+    return "99"    
+
+@app.route("/test")
+def test():
+    return jsonify({"sender_score": 0.421, "receiver_score": 0.1112, "overall_score": 0.232})
+
 
 @app.route('/calculate/<fromm>/<to>/<amount>')
 def check(fromm, to, amount):
